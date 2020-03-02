@@ -16,6 +16,9 @@ function addTransaction(user,transaction) {
 
 }
 
+function balance(user, transaction, type) {  
+  user.balance += (type==='debit' ? transaction.value*(-1) : transaction.value)
+}
 
 function getHigherTransactionByType(users, type) {
   let maior = [];
@@ -52,16 +55,24 @@ function getTransactionsCount(users) {
 
 transaction = createTransaction('credit', 50);
 addTransaction(user, transaction )
+balance(user, transaction, 'credit')
+
 
 transaction = createTransaction('credit', 120);
 addTransaction(user, transaction )
+balance(user, transaction, 'credit')
 
 transaction = createTransaction('debit', 80);
 addTransaction(user, transaction )
+balance(user, transaction, 'debit')
 
 transaction = createTransaction('debit', 30);
 addTransaction(user, transaction )
+balance(user, transaction, 'debit')
 
+transaction = createTransaction('credit', 130);
+addTransaction(user, transaction )
+balance(user, transaction, 'credit')
 
 
 console.table(user);
@@ -73,3 +84,5 @@ console.log(getHigherTransactionByType(user.transactions, 'debit'))
 console.log(getAverageTransactionValue(user.transactions))
 
 console.log(getTransactionsCount(user.transactions ))
+
+console.log('Balance:',user.balance)
