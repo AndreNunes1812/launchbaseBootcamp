@@ -74,6 +74,11 @@ transaction = createTransaction('credit', 130);
 addTransaction(user, transaction )
 balance(user, transaction, 'credit')
 
+transaction = createTransaction('credit', 360);
+addTransaction(user, transaction )
+balance(user, transaction, 'credit')
+
+
 
 console.table(user);
 
